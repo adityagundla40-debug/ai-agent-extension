@@ -41,21 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const elOllamaEndpoint = document.getElementById('ollamaEndpoint');
   const elOllamaModel = document.getElementById('ollamaModel');
   const elHfToken = document.getElementById('hfToken');
-  const elRapidApiKey = document.getElementById('rapidApiKey');
 
-  chrome.storage.local.get(['ollamaEndpoint', 'ollamaModel', 'hfToken', 'rapidApiKey'], (res) => {
+  chrome.storage.local.get(['ollamaEndpoint', 'ollamaModel', 'hfToken'], (res) => {
     if (res.ollamaEndpoint) elOllamaEndpoint.value = res.ollamaEndpoint;
     if (res.ollamaModel) elOllamaModel.value = res.ollamaModel;
     if (res.hfToken) elHfToken.value = res.hfToken;
-    if (res.rapidApiKey) elRapidApiKey.value = res.rapidApiKey;
   });
 
   document.getElementById('saveSettingsBtn').addEventListener('click', () => {
     chrome.storage.local.set({
       ollamaEndpoint: elOllamaEndpoint.value,
       ollamaModel: elOllamaModel.value,
-      hfToken: elHfToken.value,
-      rapidApiKey: elRapidApiKey.value
+      hfToken: elHfToken.value
     }, () => {
       const fb = document.getElementById('settingsFeedback');
       fb.classList.remove('hidden');
