@@ -363,3 +363,13 @@ textarea.glass-input { resize: vertical; min-height: 80px; }
 }
 .separator-text::before { left: 0; }
 .separator-text::after { right: 0; }
+
+.voice-input-btn.icon-only {
+  min-width: 42px;
+  max-width: 42px;
+  width: 42px;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 16px;
+}

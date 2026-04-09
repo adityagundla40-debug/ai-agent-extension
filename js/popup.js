@@ -36,6 +36,35 @@ document.addEventListener('DOMContentLoaded', () => {
   backBtn.addEventListener('click', goBack);
   settingsBtn.addEventListener('click', () => showView('view-settings', 'Settings'));
 
+  // --- Reusable Voice Input for all mic buttons ---
+  document.querySelectorAll('.voice-input-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Speech recognition not supported in this browser.");
+        return;
+      }
+      const targetId = btn.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      const original = btn.textContent;
+
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.start();
+      btn.textContent = btn.classList.contains('icon-only') ? '🔴' : '🔴 Listening...';
+      btn.disabled = true;
+
+      recognition.onresult = (e) => {
+        targetEl.value = e.results[0][0].transcript;
+        btn.textContent = original;
+        btn.disabled = false;
+      };
+      recognition.onerror = recognition.onend = () => {
+        btn.textContent = original;
+        btn.disabled = false;
+      };
+    });
+  });
+
 
   // --- Settings Manager ---
   const elOllamaEndpoint = document.getElementById('ollamaEndpoint');

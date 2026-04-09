@@ -110,6 +110,7 @@
           </div>
           <div class="chat-input-row mt-3">
             <input type="text" id="screenQuery" placeholder="Ask about this screen..." class="glass-input">
+            <button class="btn primary-btn icon-only voice-input-btn" data-target="screenQuery" title="Voice input">🎤</button>
             <button id="askScreenBtn" class="btn primary-btn icon-only"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
           </div>
           <div class="compare-row mt-3">
@@ -137,6 +138,7 @@
       <div id="view-math" class="view child-view">
         <div class="glass-panel">
           <textarea id="mathInput" class="glass-input" rows="3" placeholder="Enter equation (e.g., integrate x^2 dx or type physics problem)"></textarea>
+          <button class="btn secondary-btn voice-input-btn mt-2" data-target="mathInput" title="Voice input">🎤 Speak Problem</button>
           <button id="solveMathBtn" class="btn primary-btn full-width mt-3">Solve Step-by-Step</button>
           <div id="mathResult" class="response-box glass mt-3 ai-text"></div>
         </div>
@@ -183,6 +185,7 @@
       <div id="view-image" class="view child-view">
         <div class="glass-panel">
           <textarea id="imagePrompt" class="glass-input" rows="3" placeholder="Describe the image you want to generate..."></textarea>
+          <button class="btn secondary-btn voice-input-btn mt-2" data-target="imagePrompt" title="Voice input">🎤 Speak Prompt</button>
           <button id="generateImageBtn" class="btn primary-btn full-width mt-3">Generate Image</button>
           <div id="imageResult" class="preview-box glass mt-3 hidden">
             <img id="generatedImg" src="" alt="Generated">
